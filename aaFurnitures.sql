@@ -19,7 +19,7 @@ CREATE TABLE customers (
 CREATE TABLE colors (
   color_pk int unsigned NOT NULL AUTO_INCREMENT,
   color_id varchar(20) NOT NULL,
-  color varchar(15) NOT NULL,
+  color varchar(60) NOT NULL,
   price decimal(9, 2) NOT NULL,
   PRIMARY KEY (color_pk),
   UNIQUE KEY (color_id)
@@ -28,7 +28,7 @@ CREATE TABLE colors (
 
 CREATE TABLE furnitures (
   furniture_pk int unsigned NOT NULL AUTO_INCREMENT,
-  furniture_id varchar(30) NOT NULL, 
+  furniture_id enum('BED_ROOM', 'LIVING_ROOM', 'ACCENT_FURNITURE') NOT NULL, 
   material varchar(50) NOT NULL,
   price decimal(9, 2) NOT NULL,
   PRIMARY KEY (furniture_pk),
@@ -39,7 +39,7 @@ CREATE TABLE furnitures (
 CREATE TABLE options (
   option_pk int unsigned NOT NULL AUTO_INCREMENT,
   option_id varchar(30) NOT NULL,
-  category enum('BED ROOM', 'LIVING ROOM', 'ACCENT FURNITURE', 'OUTDOOR', 'MATTRESS') NOT NULL,
+  category enum('BED', 'SOFA', 'CHAIR') NOT NULL,
   material varchar(50) NOT NULL,
   name varchar(40) NOT NULL,
   price decimal(9, 2) NOT NULL,
