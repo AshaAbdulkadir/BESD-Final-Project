@@ -11,26 +11,26 @@ INSERT INTO customers (customer_id, first_name, last_name, phone) VALUES('REYES_
 INSERT INTO customers (customer_id, first_name, last_name, phone) VALUES('SAM_HANNAH', 'Hannah', 'Sam', '865,968.2611');
 
 -- Colors
-INSERT INTO colors (color_id, color, price) VALUES('Black_Finish', 'Graphite clear coat', 300.00);
-INSERT INTO colors (color_id, color, price) VALUES('Grey_Finish', 'Silver Metallic Clear Coat', 255.00);
+INSERT INTO colors (color_id, color, price) VALUES('Dark_Finish', 'Modern graphite', 300.00);
+INSERT INTO colors (color_id, color, price) VALUES('Light_Finish', 'Mate Silver', 255.00);
 
 
 
 -- Bed Room
-INSERT INTO furnitures (furniture_id, material, price) VALUES('BED_ROOM', 'Wood', 1485.00);
-INSERT INTO furnitures (furniture_id, material, price) VALUES('BED_ROOM', 'Fabric', 1225.00);
-INSERT INTO furnitures (furniture_id, material, price) VALUES('BED_ROOM', 'Metal', 1115.00);
+INSERT INTO rooms (room_id, material, price) VALUES('BED_ROOM', 'Wood', 1485.00);
+INSERT INTO rooms (room_id, material, price) VALUES('BED_ROOM', 'Fabric', 1225.00);
+INSERT INTO rooms (room_id, material, price) VALUES('BED_ROOM', 'Metal', 1115.00);
 
 
 -- Living Room
-INSERT INTO furnitures (furniture_id, material, price) VALUES('LIVING_ROOM', 'Wood', 3475.00);
-INSERT INTO furnitures (furniture_id, material, price) VALUES('LIVING_ROOM', 'Fabric', 1400.00);
-INSERT INTO furnitures (furniture_id, material, price) VALUES('LIVING_ROOM', 'Leather', 5455.00);
+INSERT INTO rooms (room_id, material, price) VALUES('LIVING_ROOM', 'Wood', 3475.00);
+INSERT INTO rooms (room_id, material, price) VALUES('LIVING_ROOM', 'Fabric', 1400.00);
+INSERT INTO rooms (room_id, material, price) VALUES('LIVING_ROOM', 'Leather', 5455.00);
 
 
 -- Accent Furniture
-INSERT INTO furnitures (furniture_id, material, price) VALUES('ACCENT_FURNITURE', 'Wood', 495.00);
-INSERT INTO furnitures (furniture_id, material, price) VALUES('ACCENT_FURNITURE', 'Metal', 255.00);
+INSERT INTO rooms (room_id, material, price) VALUES('ACCENT_FURNITURE', 'Wood', 495.00);
+INSERT INTO rooms (room_id, material, price) VALUES('ACCENT_FURNITURE', 'Metal', 255.00);
 
 -- Options
 INSERT INTO options(option_id, category, material, name, price) VALUES('AA_Collections', 'BED', 'Wood', 'AA Bed', 600.00);
