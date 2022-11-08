@@ -1,13 +1,16 @@
 # Final-Project
 
+Project Participants:
+Asha Abdulkadir 
+
 Title:
-AA_Furnitures Database Application
+AA_Furniture Store Database Application
 
 Executive Summary:
 
 This project is a current database of AA_Furnitures. The main purpose is to 
-provide customers a selection of furniture for different rooms. The entities 
-will show products available, price, different material, and color using CRUD 
+provide service to customers by offering a selection of furniture for different rooms. The entities 
+will show products available for different rooms, price, different material, and color using CRUD 
 operation. It’s capable of smooth checkout by offering different order 
 options.
 In the future it has potential to include more accent furniture (coffee 
