@@ -28,8 +28,8 @@ class FetchFurnitureTest extends FetchFurnitureTestSupport {
 		
 		// Given: a valid model, trim and URI
 		FurnitureRoom room = FurnitureRoom.BED_ROOM;
-		String material = "Unknown Value";
-		String uri = String.format("http://localhost:%d/aaFurnitures?room=%s&material=%s", getBaseUri(), room, material);
+		String material = "Wood";
+		String uri = String.format("%s?room=%s&material=%s", getBaseUri(), room, material);
 
 		// When: a connection is made to the URI
 		ResponseEntity<Furnitures> response = 

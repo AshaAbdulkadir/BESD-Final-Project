@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS order_options;
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS options;
-DROP TABLE IF EXISTS furnitures;
+DROP TABLE IF EXISTS rooms;
 DROP TABLE IF EXISTS colors;
 DROP TABLE IF EXISTS customers;
 
@@ -26,13 +26,13 @@ CREATE TABLE colors (
 );
 
 
-CREATE TABLE furnitures (
-  furniture_pk int unsigned NOT NULL AUTO_INCREMENT,
-  furniture_id enum('BED_ROOM', 'LIVING_ROOM', 'ACCENT_FURNITURE') NOT NULL, 
+CREATE TABLE rooms (
+  room_pk int unsigned NOT NULL AUTO_INCREMENT,
+  room_id enum('BED_ROOM', 'LIVING_ROOM', 'ACCENT_FURNITURE') NOT NULL, 
   material varchar(50) NOT NULL,
   price decimal(9, 2) NOT NULL,
-  PRIMARY KEY (furniture_pk),
-  UNIQUE KEY (furniture_id)
+  PRIMARY KEY (room_pk),
+  UNIQUE KEY (room_id)
 );
 
 
@@ -51,12 +51,12 @@ CREATE TABLE options (
 CREATE TABLE orders (
   order_pk int unsigned NOT NULL AUTO_INCREMENT,
   customer_fk int unsigned NOT NULL,
-  furniture_fk int unsigned NOT NULL,
+  room_fk int unsigned NOT NULL,
   color_fk int unsigned NOT NULL,
   price decimal(9, 2) NOT NULL,
   PRIMARY KEY (order_pk),
   FOREIGN KEY (customer_fk) REFERENCES customers (customer_pk) ON DELETE CASCADE,
-  FOREIGN KEY (furniture_fk) REFERENCES furnitures (furniture_pk) ON DELETE CASCADE,
+  FOREIGN KEY (room_fk) REFERENCES rooms (room_pk) ON DELETE CASCADE,
   FOREIGN KEY (color_fk) REFERENCES colors (color_pk) ON DELETE CASCADE
 );
 
