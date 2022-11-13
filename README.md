@@ -20,17 +20,17 @@ and more.
  
 Initial Features:
 
- Entities: customers, Furniture, Accent furniture,orders, order options
+ Entities: customers, colors, rooms, options, orders, order options
 
  A User can perform the following operations:
   o Login, and use system
   o Browse all furniture
-  o Browse furniture by type
+  o Browse furniture by room, color and material options
   o Order furniture
   
  Stretch Goals (to be completed after graduation):
-  o Browse by color
-  o Browse by material used 
+  o Browse by more category
+  o Browse by design 
   o Check out X amount of furniture at a time
   o Different checkout options
   o View all details about a specific furniture 
