@@ -1,9 +1,8 @@
 package com.promineotechfinals.aaFurnitures.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Map;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,12 +11,18 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.promineotechfinals.aaFurnitures.controller.support.FetchFurnitureTestSupport;
 import com.promineotechfinals.aaFurnitures.entity.FurnitureRoom;
 import com.promineotechfinals.aaFurnitures.entity.Furnitures;
-
+/**
+ * 
+ * @author Asha
+ *
+ */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("test")
 class FetchFurnitureTest extends FetchFurnitureTestSupport {
 
 	@Test
@@ -32,16 +37,20 @@ class FetchFurnitureTest extends FetchFurnitureTestSupport {
 		String uri = String.format("%s?room=%s&material=%s", getBaseUri(), room, material);
 
 		// When: a connection is made to the URI
-		ResponseEntity<Furnitures> response = 
-				getRestTemplate().getForEntity(uri, Furnitures.class);
+		ResponseEntity<List<Furnitures>> response = 
+				getRestTemplate().exchange(uri, HttpMethod.GET, null,
+						new ParameterizedTypeReference<>() {
+						});
 
-		// Then: a not found (404) status code is returned
+		// Then: a success (OK - 200) status code is returned
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
-		// And: an error message is returned
-		//Map<String, Object> error = response.getBody();
+		// And: the actual list is the same as the expected list
+		List<Furnitures> actual = response.getBody();
+		List<Furnitures> expected = buildExpected();
 
-		//assertErrorMessageValid(error, HttpStatus.NOT_FOUND);
+		assertThat(actual).isEqualTo(expected);
+
 	}
 
 }

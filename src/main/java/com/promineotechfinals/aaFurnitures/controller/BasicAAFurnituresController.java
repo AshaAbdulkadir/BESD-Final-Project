@@ -12,7 +12,7 @@ public class BasicAAFurnituresController implements AAFurnituresController {
 
 	@Override
 	public List<Furnitures> fetchFurnitures(String room, String material) {
-		log.info("room={}, material={}", room, material);
+		log.debug("room={}, material={}", room, material);
 		
 		return null;
 	}
