@@ -5,10 +5,6 @@ INSERT INTO customers (customer_id, first_name, last_name, phone) VALUES('ADEN_Z
 INSERT INTO customers (customer_id, first_name, last_name, phone) VALUES('SAGO_DUBE', 'Dube', 'Sago', '901.993.3774');
 INSERT INTO customers (customer_id, first_name, last_name, phone) VALUES('JACOB_COX', 'Cox', 'Jacob', '731.377.3854');
 INSERT INTO customers (customer_id, first_name, last_name, phone) VALUES('MATA_LULU', 'Lulu', 'Mata', NULL);
-INSERT INTO customers (customer_id, first_name, last_name, phone) VALUES('MUSA_RAY', 'Ray', 'Musa', '685.399.2610');
-INSERT INTO customers (customer_id, first_name, last_name, phone) VALUES('HASSAN_SARAH', 'Sarah', 'Hassan', NULL);
-INSERT INTO customers (customer_id, first_name, last_name, phone) VALUES('REYES_BELKYS', 'Belkys', 'Reyes', '614.388.3663');
-INSERT INTO customers (customer_id, first_name, last_name, phone) VALUES('SAM_HANNAH', 'Hannah', 'Sam', '865,968.2611');
 
 -- Colors
 INSERT INTO colors (color_id, color, price) VALUES('Dark_Finish', 'Modern graphite', 300.00);
