@@ -16,7 +16,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
 import com.promineotechfinals.aaFurnitures.controller.support.FetchFurnitureTestSupport;
-import com.promineotechfinals.aaFurnitures.entity.FurnitureRoom;
+import com.promineotechfinals.aaFurnitures.entity.Rooms;
 import com.promineotechfinals.aaFurnitures.entity.Furnitures;
 /**
  * 
@@ -26,19 +26,18 @@ import com.promineotechfinals.aaFurnitures.entity.Furnitures;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-@Sql(scripts = { "classpath:aaFurnitures/aaFurnitures.sql",
-"classpath:aaFurnitures/aaFurnituresData.sql" }, config = @SqlConfig(encoding = "utf-8"))
+@Sql(scripts = { "classpath:aaFurniture/aaFurnitures.sql",
+"classpath:aaFurniture/aaFurnituresData.sql" }, config = @SqlConfig(encoding = "utf-8"))
 
 
 class FetchFurnitureTest extends FetchFurnitureTestSupport {
 
 	@Test
 	void testThatFurnituresAreReturnedWhenAValidRoomAndMaterialAreSupplied() {
-		System.out.println(getBaseUri());
 		
 		
-		// Given: a valid model, trim and URI
-		FurnitureRoom room = FurnitureRoom.BED_ROOM;
+		// Given: a valid room, material and URI
+		Rooms room = Rooms.BED_ROOM;
 		String material = "Wood";
 		String uri = String.format("%s?room=%s&material=%s", getBaseUri(), room, material);
 

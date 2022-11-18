@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.promineotechfinals.aaFurnitures.entity.FurnitureRoom;
+import com.promineotechfinals.aaFurnitures.entity.Rooms;
 import com.promineotechfinals.aaFurnitures.entity.Furnitures;
 
 public class FetchFurnitureTestSupport extends BaseTest {
@@ -15,20 +15,20 @@ public class FetchFurnitureTestSupport extends BaseTest {
 		// @formatter: off
 		
 		list.add(Furnitures.builder()
-				.roomId(FurnitureRoom.BED_ROOM)
+				.roomId(Rooms.BED_ROOM)
 				.material("Wood")
 				.price(new BigDecimal("1485.00"))
 				.build());
 		
 		list.add(Furnitures.builder()
-				.roomId(FurnitureRoom.BED_ROOM)
+				.roomId(Rooms.BED_ROOM)
 				.material("Fabric")
 				.price(new BigDecimal("1225.00"))
 				.build());
 		
 		// @formatter: on
 		
-		//Collections.sort(list);
+		Collections.sort(list);
 		return list;
 	}
 }

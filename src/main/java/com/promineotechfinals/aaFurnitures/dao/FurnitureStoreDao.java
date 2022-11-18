@@ -1,11 +1,11 @@
-package com.promineotechfinals.aaFurnitures.service;
+package com.promineotechfinals.aaFurnitures.dao;
 
 import java.util.List;
 
 import com.promineotechfinals.aaFurnitures.entity.Furnitures;
 import com.promineotechfinals.aaFurnitures.entity.Rooms;
 
-public interface FurnitureStoreService {
+public interface FurnitureStoreDao {
 	/**
 	 * 
 	 * @param room

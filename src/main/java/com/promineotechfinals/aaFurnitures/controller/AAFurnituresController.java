@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.promineotechfinals.aaFurnitures.entity.Furnitures;
+import com.promineotechfinals.aaFurnitures.entity.Rooms;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -65,7 +66,7 @@ public interface AAFurnituresController {
 	@ResponseStatus(code = HttpStatus.OK)
 	List<Furnitures> fetchFurnitures(
 			 @RequestParam(required = false)
-			  	String room, 
+			  	Rooms room, 
 			  @RequestParam(required = false)
 			  	String material);
 
