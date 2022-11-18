@@ -12,6 +12,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
 
 import com.promineotechfinals.aaFurnitures.controller.support.FetchFurnitureTestSupport;
 import com.promineotechfinals.aaFurnitures.entity.FurnitureRoom;
@@ -21,15 +23,19 @@ import com.promineotechfinals.aaFurnitures.entity.Furnitures;
  * @author Asha
  *
  */
+
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
+@Sql(scripts = { "classpath:aaFurnitures/aaFurnitures.sql",
+"classpath:aaFurnitures/aaFurnituresData.sql" }, config = @SqlConfig(encoding = "utf-8"))
+
+
 class FetchFurnitureTest extends FetchFurnitureTestSupport {
 
 	@Test
 	void testThatFurnituresAreReturnedWhenAValidRoomAndMaterialAreSupplied() {
 		System.out.println(getBaseUri());
 		
-		//Using the Given-When-Then of representing test (Part of BDD by Daniel Terhorst and Chris matts)
 		
 		// Given: a valid model, trim and URI
 		FurnitureRoom room = FurnitureRoom.BED_ROOM;
