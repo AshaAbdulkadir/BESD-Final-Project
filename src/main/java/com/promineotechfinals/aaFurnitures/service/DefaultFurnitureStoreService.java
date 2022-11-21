@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.promineotechfinals.aaFurnitures.dao.FurnitureStoreDao;
 import com.promineotechfinals.aaFurnitures.entity.Furnitures;
@@ -19,7 +20,8 @@ public class DefaultFurnitureStoreService implements FurnitureStoreService {
 	
 	@Autowired
 	private FurnitureStoreDao furnitureStoreDao;
-
+	
+	@Transactional(readOnly = true)
 	@Override
 	public List<Furnitures> fetchFurnitures(Rooms room, String material) {
 		log.info("The fetchFurnitures method was called with room={} and material={}", room, material);

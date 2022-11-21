@@ -2,12 +2,17 @@ package com.promineotechfinals.aaFurnitures.controller;
 
 import java.util.List;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.promineotechfinals.aaFurnitures.Constants;
 import com.promineotechfinals.aaFurnitures.entity.Furnitures;
 import com.promineotechfinals.aaFurnitures.entity.Rooms;
 
@@ -20,10 +25,13 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 
+
+@Validated
 @RequestMapping("/furnitures")
 @OpenAPIDefinition(info = @Info(title ="Furniture Store Service"), servers = {
 		@Server(url = "http://localhost:8080", description = "Local server.")})
 public interface AAFurnituresController {
+
 	//@formatter:off 
 	@Operation(
 			summary = "Returns a list of Furnitures",
@@ -66,7 +74,10 @@ public interface AAFurnituresController {
 	@ResponseStatus(code = HttpStatus.OK)
 	List<Furnitures> fetchFurnitures(
 			 @RequestParam(required = false)
-			  	Rooms room, 
+			  	Rooms room,
+			  	
+			  @Length(max = Constants.MATERIAL_MAX_LENGTH) // good max length for material type
+			  @Pattern(regexp = "[\\w\\s]*") // validation to insert regular expression like word and space characters
 			  @RequestParam(required = false)
 			  	String material);
 
