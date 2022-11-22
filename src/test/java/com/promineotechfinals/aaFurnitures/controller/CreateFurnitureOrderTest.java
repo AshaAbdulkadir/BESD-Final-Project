@@ -64,16 +64,15 @@ class CreateFurnitureOrderTest extends CreateFurnitureOrderTestSupport {
 		//Then: a 201 status is returned
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 		
-		assertThat(response.getBody()).isNotNull();
-		
-		
+	
 		//And: the returned order is correct
+		assertThat(response.getBody()).isNotNull();
 		com.promineotechfinals.aaFurnitures.entity.Order order = response.getBody();
 		assertThat(order.getCustomer().getCustomerId()).isEqualTo("JAMES_PAUL");
-		assertThat(order.getRoom().getRoomId()).isEqualTo(Rooms.BED_ROOM);
-		assertThat(order.getRoom().getMaterial()).isEqualTo("Wood");
+		assertThat(order.getRooms().getRoomId()).isEqualTo(Rooms.BED_ROOM);
+		assertThat(order.getRooms().getMaterial()).isEqualTo("Wood");
 		assertThat(order.getColor().getColorId()).isEqualTo("Dark_Finish");
-		assertThat(order.getOptions().getOptionId()).isEqualTo("AA_Collections");
+		assertThat(order.getOption().getOptionId()).isEqualTo("AA_Collections");
 		
 		
 		assertThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "orders")).isEqualTo(numRowsOrders + 1);

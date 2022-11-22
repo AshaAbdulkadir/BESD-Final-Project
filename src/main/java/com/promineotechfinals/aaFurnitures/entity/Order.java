@@ -20,10 +20,10 @@ public class Order {
 	private BigDecimal price;
 	
 	
-	/*  @JsonIgnore
+	  @JsonIgnore
 	  public Long getOrderPK() {
 	  return orderPK;
 	  }
-	*/  
+	 
 
 }
