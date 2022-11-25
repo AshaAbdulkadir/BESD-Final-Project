@@ -1,10 +1,11 @@
 package com.promineotechfinals.aaFurnitures.dao;
 
-import com.promineotechfinals.aaFurnitures.entity.Order;
-import com.promineotechfinals.aaFurnitures.entity.OrderRequest;
+import javax.validation.constraints.NotNull;
+
+import com.promineotechfinals.aaFurnitures.entity.Customer;
 
 public interface FurnitureOrderDao {
 
-	Order createOrder(OrderRequest orderRequest);
+	Customer fetchCustomer(@NotNull String customer);
 
 }
