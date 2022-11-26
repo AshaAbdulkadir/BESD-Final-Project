@@ -10,5 +10,10 @@ public class FurnitureStore {
 		SpringApplication.run(FurnitureStore.class, args);
 
 	}
-
+	
+// REST service
+// added database dependency/ spring auto configuration- to enable connection pool 
+// jdbc template(query includes-connection/prepared statement/resultset) takes boiler plate away
+// database configuration in application yaml file = started with no error = configured correctly
+	
 }

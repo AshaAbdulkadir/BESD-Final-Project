@@ -8,6 +8,8 @@ import lombok.Data;
 @Data
 @Builder
 public class Option {
+	protected void Student() {
+	  }
 	private Long optionPK;
 	private String optionId;
 	private OptionType category;

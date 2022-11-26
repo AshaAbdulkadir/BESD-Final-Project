@@ -32,7 +32,7 @@ CREATE TABLE rooms (
   material varchar(50) NOT NULL,
   price decimal(9, 2) NOT NULL,
   PRIMARY KEY (room_pk),
-  UNIQUE KEY (room_id)
+  UNIQUE KEY (room_id, material)
 );
 
 
