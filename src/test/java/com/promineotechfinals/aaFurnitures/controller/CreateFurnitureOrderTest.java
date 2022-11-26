@@ -21,8 +21,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.jdbc.JdbcTestUtils;
 
-import com.promineotech.jeep.entity.JeepModel;
-import com.promineotech.jeep.entity.Order;
 import com.promineotechfinals.aaFurnitures.controller.support.CreateFurnitureOrderTestSupport;
 import com.promineotechfinals.aaFurnitures.entity.Rooms;
 
@@ -67,12 +65,14 @@ class CreateFurnitureOrderTest extends CreateFurnitureOrderTestSupport {
 	
 		//And: the returned order is correct
 		assertThat(response.getBody()).isNotNull();
+		
 		com.promineotechfinals.aaFurnitures.entity.Order order = response.getBody();
 		assertThat(order.getCustomer().getCustomerId()).isEqualTo("JAMES_PAUL");
-		assertThat(order.getRooms().getRoomId()).isEqualTo(Rooms.BED_ROOM);
-		assertThat(order.getRooms().getMaterial()).isEqualTo("Wood");
+		assertThat(order.getRoom().getRoomId()).isEqualTo(Rooms.BED_ROOM);
+		assertThat(order.getRoom().getMaterial()).isEqualTo("Wood");
 		assertThat(order.getColor().getColorId()).isEqualTo("Dark_Finish");
-		assertThat(order.getOption().getOptionId()).isEqualTo("AA_Collections");
+		assertThat(order.getOptions()).hasSize(6);
+	
 		
 		
 		assertThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "orders")).isEqualTo(numRowsOrders + 1);

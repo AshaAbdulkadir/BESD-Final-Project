@@ -22,7 +22,7 @@ public interface FurnitureOrderDao {
 	Optional<Furnitures> fetchRoom(@NotNull Rooms room, @NotNull String material);
 
 	Optional<Color> fetchColor(@NotNull String color);
-	
+
 	Order saveOrder(Customer customer, Furnitures furniture, Color color, BigDecimal price, List<Option> options);
 
 }

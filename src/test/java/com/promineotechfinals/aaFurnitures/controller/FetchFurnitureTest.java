@@ -38,12 +38,8 @@ import com.promineotechfinals.aaFurnitures.entity.Furnitures;
  *
  */
 
-class FetchFurnitureTest extends FetchFurnitureTestSupport {
-	@Autowired
-	private TestRestTemplate restTemplate;
+class FetchFurnitureTest {
 
-	@LocalServerPort
-	private int serverPort;
 	
 	@Nested
 	@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -52,6 +48,11 @@ class FetchFurnitureTest extends FetchFurnitureTestSupport {
 	"classpath:aaFurniture/aaFurnituresData.sql" }, config = @SqlConfig(encoding = "utf-8"))
 	class TestsThatDoNotPolluteTheApplicationContext extends FetchFurnitureTestSupport {
 		
+		@Autowired
+		private TestRestTemplate restTemplate;
+
+		@LocalServerPort
+		private int serverPort;
 		
 		/**
 		 * 
@@ -117,7 +118,7 @@ class FetchFurnitureTest extends FetchFurnitureTestSupport {
 			// Given: a valid room, material and URI
 			Rooms room = Rooms.BED_ROOM;
 			String material = "Wood";
-			String uri = String.format("%s?room=%s&material=%s", getBaseUri(), room, material);
+			String uri = String.format("%s?room=%s&material=%s", serverPort, room, material);
 
 			// When: a connection is made to the URI
 			ResponseEntity<List<Furnitures>> response = 
@@ -160,6 +161,7 @@ class FetchFurnitureTest extends FetchFurnitureTestSupport {
 	@Sql(scripts = { "classpath:aaFurniture/aaFurnitures.sql",
 	"classpath:aaFurniture/aaFurnituresData.sql" }, config = @SqlConfig(encoding = "utf-8"))
 	class TestsThatPolluteTheApplicationContext extends FetchFurnitureTestSupport {
+		
 		@LocalServerPort
 		private int serverPort;
 

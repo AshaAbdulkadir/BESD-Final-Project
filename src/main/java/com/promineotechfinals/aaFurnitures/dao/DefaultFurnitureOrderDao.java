@@ -203,7 +203,6 @@ public class DefaultFurnitureOrderDao implements FurnitureOrderDao {
      return Order.builder()
     		 .orderPK(orderPK)
     		 .customer(customer)
-    		 .room(furniture)
     		 .color(color)
     		 .options(options)
     		 .price(price)		 
@@ -249,11 +248,14 @@ public class DefaultFurnitureOrderDao implements FurnitureOrderDao {
 	 * 
 	 * @param customer
 	 * @param furniture
+	 * @param room 
 	 * @param color
 	 * @param price
 	 * @return
 	 */
 	private SqlParams generateInsertSql(Customer customer, Furnitures furniture, Color color, BigDecimal price) {
+		
+		// Sequel statement 
 		// @formatter:off
 	    String sql = ""
 	        + "INSERT INTO orders ("
@@ -274,7 +276,7 @@ public class DefaultFurnitureOrderDao implements FurnitureOrderDao {
 		return params;
 	}
 
-
+	// Sequel parameter
 	class SqlParams {
 		String sql;
 		MapSqlParameterSource source = new MapSqlParameterSource();
