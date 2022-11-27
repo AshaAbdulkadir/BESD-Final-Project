@@ -13,9 +13,9 @@ public class CreateFurnitureOrderTestSupport extends BaseTest {
 				+"  \"material\":\"Wood\",\n"
 				+"  \"color\":\"Dark_Finish\",\n"
 				+"  \"options\":[\n"
-				+"  \"AA_Collections\",\n"
-				+"  \"NISH_Collections\",\n"
-				+"  \"ZURI_Collections\" ,\n"
+				+"  \"AA_Collections\"\n"
+				+"  \"NISH_Collections\"\n"
+				+"  \"ZURI_Collections\"\n"
 				+" ]\n"
 				+"}";
 		//@formatter:on

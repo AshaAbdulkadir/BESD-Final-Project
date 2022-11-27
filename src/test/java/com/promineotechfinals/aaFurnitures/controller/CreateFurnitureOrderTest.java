@@ -21,6 +21,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.jdbc.JdbcTestUtils;
 
+import com.promineotechfinals.aaFurnitures.controller.support.CreateFurnitureOrderTestSupport;
 import com.promineotechfinals.aaFurnitures.entity.Order;
 import com.promineotechfinals.aaFurnitures.entity.Rooms;
 
@@ -30,7 +31,7 @@ import com.promineotechfinals.aaFurnitures.entity.Rooms;
 @Sql(scripts = { "classpath:aaFurniture/aaFurnitures.sql",
 "classpath:aaFurniture/aaFurnituresData.sql" }, config = @SqlConfig(encoding = "utf-8"))
 
-class CreateFurnitureOrderTest {
+class CreateFurnitureOrderTest  extends CreateFurnitureOrderTestSupport{
 	
 	@Autowired
 	private TestRestTemplate restTemplate;
@@ -78,23 +79,6 @@ class CreateFurnitureOrderTest {
 		
 		assertThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "orders")).isEqualTo(numRowsOrders + 1);
 		assertThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "order_options")).isEqualTo(numRowsOptions + 3);
-	}
-
-	protected String createOrderBody() {
-		
-		//@formatter:off
-		return "{\n"
-				+"  \"customer\":\"JAMES_PAUL\",\n"
-				+"  \"room\":\"BED_ROOM\",\n"
-				+"  \"material\":\"wood\",\n"
-				+"  \"color\":\"Dark_Finish\",\n"
-				+"  \"options\":[\n"
-				+"  \"AA_Collections\",\n"
-				+"  \"NISH_Collections\",\n"
-				+"  \"ZURI_Collections\" ,\n"
-				+" ]\n"
-				+"}";
-		//@formatter:on
 	}
 
 }
