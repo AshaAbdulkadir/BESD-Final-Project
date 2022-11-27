@@ -43,8 +43,7 @@ CREATE TABLE options (
   material varchar(50) NOT NULL,
   name varchar(40) NOT NULL,
   price decimal(9, 2) NOT NULL,
-  PRIMARY KEY (option_pk),
-  UNIQUE KEY (option_id)
+  PRIMARY KEY (option_pk)
 );
 
 

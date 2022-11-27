@@ -3,6 +3,8 @@ spring:
     password: aaFurnitures
     username: aaFurnitures
     url: jdbc:mysql://localhost:3306/aaFurnitures
+  
+    
 logging:
   level:
     root: warn
