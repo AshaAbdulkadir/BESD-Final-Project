@@ -90,10 +90,10 @@ class FetchFurnitureTest {
 		@Test
 		void testThatAnErrorMessageIsReturnedWhenAnUnknownMaterialIsSelected() {
 
-			// Given: a valid model, trim and URI
+			// Given:a valid room, material and uri
 			Rooms room = Rooms.BED_ROOM;
 			String material = "Unknown Value";
-			String uri = String.format("http://localhost:%d/?room=%s&material=%s", serverPort, room, material);
+			String uri = String.format("http://localhost:%d/Furnitures?room=%s&material=%s", serverPort, room, material);
 
 			// When: a connection is made to the URI
 			ResponseEntity<Map<String, Object>> response = restTemplate.exchange(uri, HttpMethod.GET, null,
@@ -120,11 +120,12 @@ class FetchFurnitureTest {
 			// Given: a valid room, material and URI
 			Rooms room = Rooms.BED_ROOM;
 			String material = "Wood";
-			String uri = String.format("http://localhost:%d/furnitures?room=%s&material=%s", serverPort, room, material);
+			String uri = String.format("http://localhost:%d/furnitures?room=%s&material=%s",
+					serverPort, room, material);
 
 			// When: a connection is made to the URI
 			ResponseEntity<List<Furnitures>> response = 
-					getRestTemplate().exchange(uri, HttpMethod.GET, null,
+					restTemplate.exchange(uri, HttpMethod.GET, null,
 							new ParameterizedTypeReference<>() {
 							});
 
