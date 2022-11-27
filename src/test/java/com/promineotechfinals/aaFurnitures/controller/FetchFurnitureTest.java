@@ -14,6 +14,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -42,6 +43,7 @@ class FetchFurnitureTest {
 
 	
 	@Nested
+	@EnableAutoConfiguration
 	@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 	@ActiveProfiles("test")
 	@Sql(scripts = { "classpath:aaFurniture/aaFurnitures.sql",
@@ -118,7 +120,7 @@ class FetchFurnitureTest {
 			// Given: a valid room, material and URI
 			Rooms room = Rooms.BED_ROOM;
 			String material = "Wood";
-			String uri = String.format("%s?room=%s&material=%s", serverPort, room, material);
+			String uri = String.format("http://localhost:%d/furnitures?room=%s&material=%s", serverPort, room, material);
 
 			// When: a connection is made to the URI
 			ResponseEntity<List<Furnitures>> response = 
@@ -174,7 +176,7 @@ class FetchFurnitureTest {
 		@Test
 		void testThatAnUnplannedErrorResultsInA500Status() {
 
-			// Given: a valid model, trim and URI
+			// Given: a valid room, material and URI
 			Rooms room = Rooms.BED_ROOM;
 			String material = "Invalid";
 			String uri = String.format("http://localhost:%d/?room=%s&material=%s", serverPort, room, material);
