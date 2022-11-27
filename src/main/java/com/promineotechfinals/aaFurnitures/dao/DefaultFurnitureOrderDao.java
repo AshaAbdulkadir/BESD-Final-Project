@@ -144,7 +144,7 @@ public class DefaultFurnitureOrderDao implements FurnitureOrderDao {
 	      return Furnitures.builder()
 	          .price(rs.getBigDecimal("price"))
 	          .roomId(Rooms.valueOf(rs.getString("room_id")))
-	          .roomPK(rs.getLong("model_pk"))
+	          .roomPK(rs.getLong("room_pk"))
 	          .material(rs.getString("material"))
 	          .build();
 	      // @formatter:on
@@ -203,6 +203,7 @@ public class DefaultFurnitureOrderDao implements FurnitureOrderDao {
      return Order.builder()
     		 .orderPK(orderPK)
     		 .customer(customer)
+    		 .room(furniture)
     		 .color(color)
     		 .options(options)
     		 .price(price)		 
