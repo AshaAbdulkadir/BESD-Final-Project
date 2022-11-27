@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -20,15 +21,16 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.jdbc.JdbcTestUtils;
 
-import com.promineotechfinals.aaFurnitures.controller.support.CreateFurnitureOrderTestSupport;
+import com.promineotechfinals.aaFurnitures.entity.Order;
 import com.promineotechfinals.aaFurnitures.entity.Rooms;
 
+@EnableAutoConfiguration
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @Sql(scripts = { "classpath:aaFurniture/aaFurnitures.sql",
 "classpath:aaFurniture/aaFurnituresData.sql" }, config = @SqlConfig(encoding = "utf-8"))
 
-class CreateFurnitureOrderTest extends CreateFurnitureOrderTestSupport {
+class CreateFurnitureOrderTest {
 	
 	@Autowired
 	private TestRestTemplate restTemplate;
@@ -55,7 +57,7 @@ class CreateFurnitureOrderTest extends CreateFurnitureOrderTestSupport {
 		
 		
 		//When: an order is sent
-		ResponseEntity <com.promineotechfinals.aaFurnitures.entity.Order> response = restTemplate.exchange(uri,HttpMethod.POST, bodyEntity, com.promineotechfinals.aaFurnitures.entity.Order.class);
+		ResponseEntity <Order> response = restTemplate.exchange(uri,HttpMethod.POST, bodyEntity, Order.class);
 		
 		
 		//Then: a 201 status is returned
@@ -65,19 +67,34 @@ class CreateFurnitureOrderTest extends CreateFurnitureOrderTestSupport {
 		//And: the returned order is correct
 		assertThat(response.getBody()).isNotNull();
 		
-		com.promineotechfinals.aaFurnitures.entity.Order order = response.getBody();
+		Order order = response.getBody();
 		assertThat(order.getCustomer().getCustomerId()).isEqualTo("JAMES_PAUL");
 		assertThat(order.getRoom().getRoomId()).isEqualTo(Rooms.BED_ROOM);
 		assertThat(order.getRoom().getMaterial()).isEqualTo("Wood");
 		assertThat(order.getColor().getColorId()).isEqualTo("Dark_Finish");
-		assertThat(order.getOptions()).hasSize(6);
+		assertThat(order.getOptions()).hasSize(3);
 	
 		
 		
 		assertThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "orders")).isEqualTo(numRowsOrders + 1);
-		assertThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "order_options")).isEqualTo(numRowsOptions + 6);
+		assertThat(JdbcTestUtils.countRowsInTable(jdbcTemplate, "order_options")).isEqualTo(numRowsOptions + 3);
 	}
 
-
+	protected String createOrderBody() {
+		
+		//@formatter:off
+		return "{\n"
+				+"  \"customer\":\"JAMES_PAUL\",\n"
+				+"  \"room\":\"BED_ROOM\",\n"
+				+"  \"material\":\"wood\",\n"
+				+"  \"color\":\"Dark_Finish\",\n"
+				+"  \"options\":[\n"
+				+"  \"AA_Collections\",\n"
+				+"  \"NISH_Collections\",\n"
+				+"  \"ZURI_Collections\" ,\n"
+				+" ]\n"
+				+"}";
+		//@formatter:on
+	}
 
 }
