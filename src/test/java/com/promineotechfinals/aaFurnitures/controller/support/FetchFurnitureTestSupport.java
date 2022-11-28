@@ -19,17 +19,17 @@ public class FetchFurnitureTestSupport extends BaseTest {
 		List<Furnitures> list = new LinkedList<>();
 		
 		// @formatter: off
+	
+		list.add(Furnitures.builder()
+				.roomId(Rooms.BED_ROOM)
+				.material("Fabric")
+				.price(new BigDecimal("1225.00"))
+				.build());
 		
 		list.add(Furnitures.builder()
 				.roomId(Rooms.BED_ROOM)
 				.material("Wood")
 				.price(new BigDecimal("1485.00"))
-				.build());
-		
-		list.add(Furnitures.builder()
-				.roomId(Rooms.LIVING_ROOM)
-				.material("Fabric")
-				.price(new BigDecimal("3475.00"))
 				.build());
 		
 		// @formatter: on

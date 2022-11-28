@@ -22,7 +22,8 @@ public class BasicAAFurnituresController implements AAFurnituresController {
 
 	@Override
 	public List<Furnitures> fetchFurnitures(Rooms room, String material) {
-		log.debug("room={}, material={}", room, material);
+		
+		log.info("room={}, material={}", room, material);
 		
 		return furnitureStoreService.fetchFurnitures(room, material);
 	}
