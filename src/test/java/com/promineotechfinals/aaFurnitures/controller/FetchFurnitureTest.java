@@ -29,6 +29,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
 import com.promineotechfinals.aaFurnitures.Constants;
+import com.promineotechfinals.aaFurnitures.FurnitureStore;
 import com.promineotechfinals.aaFurnitures.controller.support.FetchFurnitureTestSupport;
 import com.promineotechfinals.aaFurnitures.entity.Rooms;
 import com.promineotechfinals.aaFurnitures.service.FurnitureStoreService;
@@ -44,7 +45,7 @@ class FetchFurnitureTest {
 	
 	@Nested
 	@EnableAutoConfiguration
-	@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+	@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = FurnitureStore.class)
 	@ActiveProfiles("test")
 	@Sql(scripts = { "classpath:aaFurniture/aaFurnitures.sql",
 	"classpath:aaFurniture/aaFurnituresData.sql" }, config = @SqlConfig(encoding = "utf-8"))
@@ -159,7 +160,7 @@ class FetchFurnitureTest {
 	}
 	
 	@Nested
-	@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+	@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = FurnitureStore.class)
 	@ActiveProfiles("test")
 	@Sql(scripts = { "classpath:aaFurniture/aaFurnitures.sql",
 	"classpath:aaFurniture/aaFurnituresData.sql" }, config = @SqlConfig(encoding = "utf-8"))
@@ -177,7 +178,7 @@ class FetchFurnitureTest {
 		@Test
 		void testThatAnUnplannedErrorResultsInA500Status() {
 
-			// Given: a valid room, material and URI
+			// Given: a valid room, material and uri
 			Rooms room = Rooms.BED_ROOM;
 			String material = "Invalid";
 			String uri = String.format("http://localhost:%d/?room=%s&material=%s", serverPort, room, material);

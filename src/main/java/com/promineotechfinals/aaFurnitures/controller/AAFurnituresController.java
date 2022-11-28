@@ -6,7 +6,6 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,7 +25,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 
 
-@Validated
 @RequestMapping("/furnitures")
 @OpenAPIDefinition(info = @Info(title ="Furniture Store Service"), servers = {
 		@Server(url = "http://localhost:8080", description = "Local server.")})
@@ -35,7 +33,7 @@ public interface AAFurnituresController {
 	//@formatter:off 
 	@Operation(
 			summary = "Returns a list of Furnitures",
-			description = "Returns a list of Furniture given an option of room and /or material",
+			description = "Returns a list of Furniture given an option of room or material",
 			responses = {
 					@ApiResponse(
 							responseCode = "200", 
@@ -48,7 +46,7 @@ public interface AAFurnituresController {
 							content = @Content(mediaType = "application/json")),
 					@ApiResponse(
 							responseCode = "404", 
-							description = "No furnitures were found with input supplied", 
+							description = "No furnitures were found with supplied input", 
 							content = @Content(mediaType = "application/json")),
 					@ApiResponse(
 							responseCode = "500", 
@@ -69,10 +67,11 @@ public interface AAFurnituresController {
 							description = "The type of material (i.e 'Wood')")
 			}
 		)
-	//@formatter:on
+
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
 	List<Furnitures> fetchFurnitures(
+			
 			 @RequestParam(required = false)
 			  	Rooms room,
 			  	
@@ -80,5 +79,7 @@ public interface AAFurnituresController {
 			  @Pattern(regexp = "[\\w\\s]*") // validation to insert regular expression like word and space characters
 			  @RequestParam(required = false)
 			  	String material);
+	
+	//@formatter:on
 
 }

@@ -14,6 +14,7 @@ import com.promineotechfinals.aaFurnitures.entity.Rooms;
 import com.promineotechfinals.aaFurnitures.entity.Furnitures;
 
 public class FetchFurnitureTestSupport extends BaseTest {
+	
 	protected List<Furnitures> buildExpected() {
 		List<Furnitures> list = new LinkedList<>();
 		
@@ -26,9 +27,9 @@ public class FetchFurnitureTestSupport extends BaseTest {
 				.build());
 		
 		list.add(Furnitures.builder()
-				.roomId(Rooms.BED_ROOM)
+				.roomId(Rooms.LIVING_ROOM)
 				.material("Fabric")
-				.price(new BigDecimal("1225.00"))
+				.price(new BigDecimal("3475.00"))
 				.build());
 		
 		// @formatter: on
@@ -47,8 +48,8 @@ public class FetchFurnitureTestSupport extends BaseTest {
 		// @formatter:off
 		assertThat(error)
 			.containsKey("message")
-			.containsEntry("status code", HttpStatus.NOT_FOUND.value())
-			.containsEntry("uri", "/Furnitures")
+			.containsEntry("status code", status.value())
+			.containsEntry("uri", "/furnitures")
 			.containsKey("timestamp")
 			.containsEntry("reason", status.getReasonPhrase());
 		// @formatter:on

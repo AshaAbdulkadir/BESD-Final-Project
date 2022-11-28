@@ -31,8 +31,7 @@ CREATE TABLE rooms (
   room_id enum('BED_ROOM', 'LIVING_ROOM', 'ACCENT_FURNITURE') NOT NULL, 
   material varchar(50) NOT NULL,
   price decimal(9, 2) NOT NULL,
-  PRIMARY KEY (room_pk),
-  UNIQUE KEY (room_id, material)
+  PRIMARY KEY (room_pk)
 );
 
 
