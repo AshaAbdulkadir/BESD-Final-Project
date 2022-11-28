@@ -94,7 +94,7 @@ class FetchFurnitureTest {
 			// Given:a valid room, material and uri
 			Rooms room = Rooms.BED_ROOM;
 			String material = "Unknown Value";
-			String uri = String.format("http://localhost:%d/Furnitures?room=%s&material=%s", serverPort, room, material);
+			String uri = String.format("http://localhost:%d/furnitures?room=%s&material=%s", serverPort, room, material);
 
 			// When: a connection is made to the URI
 			ResponseEntity<Map<String, Object>> response = restTemplate.exchange(uri, HttpMethod.GET, null,
@@ -181,7 +181,7 @@ class FetchFurnitureTest {
 			// Given: a valid room, material and uri
 			Rooms room = Rooms.BED_ROOM;
 			String material = "Invalid";
-			String uri = String.format("http://localhost:%d/?room=%s&material=%s", serverPort, room, material);
+			String uri = String.format("http://localhost:%d/furnitures?room=%s&material=%s", serverPort, room, material);
 
 			doThrow(new RuntimeException("Oh No!")).when(furnitureStoreService).fetchFurnitures(room, material);
 

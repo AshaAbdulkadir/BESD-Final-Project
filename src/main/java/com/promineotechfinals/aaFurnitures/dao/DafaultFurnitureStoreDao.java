@@ -26,13 +26,13 @@ public class DafaultFurnitureStoreDao implements FurnitureStoreDao {
 
 	@Override
 	public List<Furnitures> fetchFurnitures(Rooms room, String material) {
-		log.debug("DAO: room={}, materia={}", room, material);
+		log.debug("DAO: room={}, material={}", room, material);
 		
 		// @formatter:off
 		String sql = ""
 				+ "SELECT * "
 				+ "FROM rooms "
-				+ "WHERE room_id = :room_id AND material= :material";
+				+ "WHERE room_id = :room_id AND material = :material";
 		
 		// @formatter:on
 		Map<String, Object> params = new HashMap<>();

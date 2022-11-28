@@ -34,4 +34,11 @@ INSERT INTO options(option_id, category, material, name, price) VALUES('NISH_Col
 INSERT INTO options(option_id, category, material, name, price) VALUES('ZURI_Collections', 'BED', 'Fabric', 'AA Bed Room', 525.00);
 
 
+INSERT INTO options(option_id, category, material, name, price) VALUES('AA_Collections', 'SOFA', 'Wood', 'AA Sofa', 975.00);
+INSERT INTO options(option_id, category, material, name, price) VALUES('NISH_Collections', 'BED', 'Metal', 'Nish Sofa', 700.00);
+INSERT INTO options(option_id, category, material, name, price) VALUES('ZURI_Collections', 'BED', 'Fabric', 'Zuri Sofa', 450.00);
 
+
+
+INSERT INTO options(option_id, category, material, name, price) VALUES('AA_Collections', 'CHAIR', 'Wood', 'AA Chair', 600.00);
+INSERT INTO options(option_id, category, material, name, price) VALUES('NISH_Collections', 'CHAIR', 'Metal', 'Nish Chair', 399.00);
