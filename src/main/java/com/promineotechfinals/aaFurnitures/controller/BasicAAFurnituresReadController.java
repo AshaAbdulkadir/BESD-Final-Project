@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 //rest controller in implementation class for it to work
 @RestController 
 @Slf4j
-public class BasicAAFurnituresController implements AAFurnituresController {
+public class BasicAAFurnituresReadController implements AAFurnituresReadController {
 	
 	
 	@Autowired 

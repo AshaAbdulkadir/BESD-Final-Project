@@ -23,7 +23,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @RequestMapping("/orders")
 @OpenAPIDefinition(info = @Info(title ="Furniture Order Service"), servers = {
 		@Server(url = "http://localhost:8080", description = "Local server.")})
-public interface AAFurnituresOrderController {
+public interface AAFurnituresDeleteOrderController {
 
 	//@formatter:off 
 	@Operation(
@@ -61,7 +61,9 @@ public interface AAFurnituresOrderController {
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	Order createOrder(@Valid @RequestBody com.promineotechfinals.aaFurnitures.entity.OrderRequest orderRequest);
+	Order createOrder(
+			@Valid 
+			@RequestBody com.promineotechfinals.aaFurnitures.entity.OrderRequest orderRequest);
 	
 	
 	//@formatter:on
